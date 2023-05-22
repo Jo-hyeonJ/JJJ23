@@ -1,4 +1,6 @@
-﻿namespace JJJ23
+﻿using System.Reflection;
+
+namespace JJJ23
 {
 
     internal class Program
@@ -82,6 +84,36 @@
         {
             return string.Concat(word.Where((w, i) => ((i + 1) % code == 0)));
         }
+
+        public static int CombineBigNum(int a, int b)
+        {
+            string ab = string.Concat(a.ToString(),b.ToString());
+            string ba = string.Concat(b.ToString(), a.ToString());
+
+            if(int.Parse(ab) >= int.Parse(ba))
+            {
+                return int.Parse(ab);
+            }
+            else
+            {
+                return int.Parse(ba);
+            }
+        }
+
+        public static int[] RepeatNum(int[] nums)
+        {
+            List<int> result = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int e = nums[i];
+                for (int j = 0; j < e; j++)
+                {
+                    result.Add(e);
+                }
+            }
+
+            return result.ToArray();
+        }
         static void Main(string[] args)
         {
             //1교시
@@ -130,7 +162,8 @@
                 Console.WriteLine(v.name + v.order);
             }
             */
-
+            //2,3교시
+            /*
             // 정수 num이 짝수일 경우 even을 반환, 홀수인 경우 odd를 반환하는 함수
 
             Console.WriteLine("30은 " + IsEven(30));
@@ -150,14 +183,20 @@
             string ww = "ashasoasmase";
 
             Console.WriteLine(Enigma(ww,3));
+            */
 
             // Q. a와 b를 결합했을 때 더 큰 조합을 리턴하라
             // 5와 15가 결합 됐을 때 155가 아닌 515가 나와야함
 
+            Console.WriteLine(CombineBigNum(125, 15));
+
+
             // Q. 배열의 원소만큼 추가하기(int[])
             // 1은 배열에 '1' 하나, 6은 배열에 '6' 6개
 
+            int[] nums = { 1, 2, 3, 4, 5, 6 };
 
+            Console.WriteLine(string.Concat(RepeatNum(nums)));
         }
     }
     public static class Method
